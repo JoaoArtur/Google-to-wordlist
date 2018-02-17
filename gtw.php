@@ -7,6 +7,7 @@
 
 	$gtw = new GTW();
 	$gtw->adicionar('chave','Digite a palavra-chave');
+	$gtw->adicionar('paginas','Quantidade de páginas a buscar');
 
 	if ($gtw->chave != '') {
 		$gtw->buscarChave();

@@ -21,7 +21,10 @@
 		}
 
 		public function buscarChave($a=false) {
-			for ($t=0; $t < 10; $t++) { 
+			if (!isset($this->paginas)) {
+				$this->paginas = 10;
+			}
+			for ($t=0; $t < $this->paginas; $t++) { 
 				try {
 					$pagina     = $t*10;
 					$localidade = get_headers('https://google.com/')[1];
@@ -30,7 +33,7 @@
 					$client     = new GuzzleHttp\Client();
 					$res        = $client->request('GET', $url, [
 						'headers' => [
-							'User-Agent' => \Campo\UserAgent::random()
+							'User-Agent' => \Campo\UserAgent::random(['os_type' => 'Windows', 'device_type' => 'Mobile'])
 						]
 					]);
 
@@ -85,7 +88,7 @@
 					$client = new GuzzleHttp\Client();
 					$res    = $client->request('GET', $url, [
 						'headers' => [
-							'User-Agent' => \Campo\UserAgent::random()
+							'User-Agent' => \Campo\UserAgent::random(['os_type' => 'Windows'])
 						]
 					]);
 					if ($res->getStatusCode() === 200) {
