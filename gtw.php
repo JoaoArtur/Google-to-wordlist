@@ -16,5 +16,5 @@
 	if ($gtw->lista != '') {
 		$gtw->salvarLista();
 	}
-	print_r($gtw->texto);
+
 ?>
